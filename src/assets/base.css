@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --white: #ffffff;
+  --white-soft: #f8f8f8;
+  --white-mute: #f2f2f2;
+
+  --black: #181818;
+  --black-soft: #222222;
+  --black-mute: #282828;
+
+  --indigo: #2c3e50;
+
+  --brand-color: #9B32FF;
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--white);
+  --color-text: var(--black);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--black);
+    --color-text: var(--white);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+
+  font-family:
+    "Funnel Sans";
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
