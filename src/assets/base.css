@@ -31,15 +31,20 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
+
   font-weight: normal;
+  font-family: "Funnel Sans";
 }
 
 body {
-  color: var(--color-text);
-  background: var(--color-background);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  font-family:
-    "Funnel Sans";
+  color: var(--color-text);
+  background: var(--color-background);  
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
