@@ -9,6 +9,11 @@ const router = createRouter({
       name: "urlShortener",
       component: UrlShortenerView,
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "tree",
+      component: () => import("../views/RedirectView.vue"),
+    },
     // {
     //   path: "/about",
     //   name: "about",
