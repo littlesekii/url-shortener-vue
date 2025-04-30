@@ -1,11 +1,14 @@
 <script setup>
 import { /*RouterLink, */ RouterView } from "vue-router";
-import { Analytics } from "@vercel/analytics/react";
+import { inject } from "@vercel/analytics"
+import { computed } from "@vue/reactivity";
+
+computed(() => inject());
+
 </script>
 
 <template>
   <RouterView />
-  <Analytics />
 </template>
 
 <style scoped>
