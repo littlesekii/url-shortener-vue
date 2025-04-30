@@ -7,7 +7,7 @@ import logo_light from "@/assets/icons/logo-light.gif";
 import { computed, ref } from "vue";
 import http from "@/utils/http";
 
-const BASE_URL = "https://url-shortener-api-yand.onrender.com";
+// const BASE_URL = "https://url-shortener-api-yand.onrender.com";
 
 const logo = computed(() => {
   return (window.matchMedia("(prefers-color-scheme: dark)").matches) ? logo_dark : logo_light;
