@@ -21,7 +21,7 @@ function shortenUrl(url) {
   http.post("/short", JSON.stringify(body))
     .then(res => res.json())
     .then(data => {
-      urlShortened.value = data.urlRef.replace("1001", "2001");
+      urlShortened.value = data.urlRef.replace("http://localhost:1001/", "sh.linky.cat/");
     });
 } 
 
