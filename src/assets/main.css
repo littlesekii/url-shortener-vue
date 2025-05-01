@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.f-column-reverse {
+  flex-direction: column-reverse;
+}
+
 .f-centered {
   justify-content: center;
   align-items: center;

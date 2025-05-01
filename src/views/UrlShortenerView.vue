@@ -4,10 +4,13 @@ import UrlFormComponent from "@/components/UrlFormComponent.vue";
 import logo_dark from "@/assets/icons/logo-dark.gif";
 import logo_light from "@/assets/icons/logo-light.gif";
 
-import { computed, ref } from "vue";
+import { computed, ref, useTemplateRef } from "vue";
 import http from "@/utils/http";
+import NotificationTrayComponent from "@/components/Notification/NotificationTrayComponent.vue";
 
 // const BASE_URL = "https://url-shortener-api-yand.onrender.com";
+
+const notificationTray = useTemplateRef("notification-tray");
 
 const logo = computed(() => {
   return (window.matchMedia("(prefers-color-scheme: dark)").matches) ? logo_dark : logo_light;
@@ -27,6 +30,8 @@ function shortenUrl(url) {
 
 function copyUrl(url) {
   navigator.clipboard.writeText(url);
+
+  notificationTray.value.notify(true, "URL copiada com sucesso!");
 }
 
 </script>
@@ -41,6 +46,7 @@ function copyUrl(url) {
     <section class="container">
       <UrlFormComponent @click="shortenUrl" type="shorten" v-if="!urlShortened" />
       <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-else />
+      <NotificationTrayComponent ref="notification-tray" />
     </section>
   </main>
   <footer class="footer flex f-centered" >
@@ -49,10 +55,6 @@ function copyUrl(url) {
 </template>
 
 <style scoped>
-
-section:first-of-type {
-  /* padding-bottom: 200px; */
-}
 
 .container {
   max-width: 1040px;
