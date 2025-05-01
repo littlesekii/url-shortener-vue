@@ -27,18 +27,31 @@ function shortenUrl(url) {
   const body = {urlDest: url};
 
   http.post("/short", JSON.stringify(body))
-    .then(res => res.json())
+    .then(res => { 
+      if (res.ok) { return res.json(); }
+      else {
+        throw new Error();
+      }    
+    })
     .then(data => {
       urlShortened.value = data.urlRef.replace("http://localhost:1001/", "https://sh.linky.cat/");
+      
       isLoading.value = false;
       isReady.value = true;
+      notificationTray.value.notify(true, "URL shortened");
+    })
+    .catch(() => {
+      isLoading.value = false;
+      isReady.value = false;
+      notificationTray.value.notify(false, "Invalid URL");
     });
 } 
 
 function copyUrl(url) {
   navigator.clipboard.writeText(url);
+  isReady.value = false;
 
-  notificationTray.value.notify(true, "URL copiada com sucesso!");
+  notificationTray.value.notify(true, "Copied URL to clipboard");
 }
 
 </script>
@@ -50,9 +63,9 @@ function copyUrl(url) {
     
   </header>
   <main class="container flex f-column f-centered">
-    <section class="container flex f-colum">
+    <section class="container flex f-column">
       <img class="loading" :src="loading_icon" alt="" v-if="isLoading">
-      <UrlFormComponent @click="shortenUrl" type="shorten" v-if="!isLoading && !isReady" />
+      <UrlFormComponent @click="shortenUrl" ref="urlshortener-input" v-if="!isLoading && !isReady" />
       <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-if="isReady" />
     </section>
   </main>
