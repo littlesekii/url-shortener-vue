@@ -68,6 +68,8 @@ function copyUrl(url) {
       <UrlFormComponent @click="shortenUrl" type="shorten" ref="urlshortener-input" v-if="!isLoading && !isReady" />
       <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-if="isReady" />
     </section>
+
+    
   </main>
 
   <footer class="footer flex f-centered" >

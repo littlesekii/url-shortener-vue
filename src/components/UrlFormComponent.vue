@@ -38,22 +38,29 @@ form {
 }
 
 .input-url {
-  width: 60%;
+  width: 100%;
+  max-width: 420px;
+
   padding: 10px 15px;
   margin-right: 5px;
 
   border-radius: 10px;
   border: none;
 
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
   font-size: 12pt;
 }
 
 .input-button {
-  width: 20%;
+  width: 100%;
+  max-width: 140px;
   padding: 10px 15px;
 
   border-radius: 10px;
   border: none;
+
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 
   cursor: pointer;
 
@@ -62,5 +69,20 @@ form {
 
   background-color: var(--color-brand);
   color: var(--white);
+}
+
+@media (max-width: 640px) {
+  form {
+    flex-direction: column;
+  }
+  .input-url {
+    max-width: 90%;
+
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  .input-button {
+    max-width: 90%;
+  }
 }
 </style>
