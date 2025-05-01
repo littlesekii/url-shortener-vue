@@ -1,5 +1,5 @@
 const http = {
-  baseUrl: "https://url-shortener-api-yand.onrender.com",
+  baseUrl: "https://api.linky.cat",
   get: function (url) {
     // console.log(this.baseUrl + url);
 
