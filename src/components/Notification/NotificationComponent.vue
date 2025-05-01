@@ -43,17 +43,15 @@ onMounted(() => {
 
     opacity: 1;
 
-    /* z-index: 1; */
-
     user-select: none;
     cursor: pointer;
   }
 
   .success {
-    background-color: var(--green-success-color);
+    background-color: var(--color-success);
   }
   .error {
-    background-color: var(--red-error-color);
+    background-color: var(--color-error);
   }
 
   .vanishing {

@@ -30,20 +30,14 @@ defineExpose({notify});
 
 <style scoped>
 .notification-tray {
-
   max-width: 100%;
   width: 300px;
-  /* min-height: 100vh; */
-
-  /* padding: 20px; */
 
   justify-content: flex-end;
 
   position: fixed;
   right: 0;
   top: 0;
-
-  /* background-color: aliceblue; */
 }
 
 @media (max-width: 400px) {

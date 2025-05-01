@@ -11,15 +11,19 @@
 
   --indigo: #2c3e50;
 
-  --brand-color: #9B32FF;
-  --green-success-color: #00d369;
-  --red-error-color: #e44949;
+  --brand: #9B32FF;
+  --green-success: #00d369;
+  --red-error: #e44949;
 }
 
 /* semantic color variables for this project */
 :root {
   --color-background: var(--white);
   --color-text: var(--black);
+
+  --color-brand: var(--brand);
+  --color-success: var(--green-success);
+  --color-error: var(--red-error);
 }
 @media (prefers-color-scheme: dark) {
   :root {
