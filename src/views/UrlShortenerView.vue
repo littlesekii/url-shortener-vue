@@ -1,8 +1,9 @@
 <script setup>
 import UrlFormComponent from "@/components/UrlFormComponent.vue";
 
-import logo_dark from "@/assets/icons/logo-dark.gif";
-import logo_light from "@/assets/icons/logo-light.gif";
+import loading_icon from "@/assets/icons/loading.svg";
+import logo_dark_icon from "@/assets/icons/logo-dark.gif";
+import logo_light_icon from "@/assets/icons/logo-light.gif";
 
 import { computed, ref, useTemplateRef } from "vue";
 import http from "@/utils/http";
@@ -12,19 +13,25 @@ import NotificationTrayComponent from "@/components/Notification/NotificationTra
 
 const notificationTray = useTemplateRef("notification-tray");
 
-const logo = computed(() => {
-  return (window.matchMedia("(prefers-color-scheme: dark)").matches) ? logo_dark : logo_light;
+const logo_icon = computed(() => {
+  return (window.matchMedia("(prefers-color-scheme: dark)").matches) ? logo_dark_icon : logo_light_icon;
 });
 
 const urlShortened = ref("");
+const isLoading = ref(false);
+const isReady = ref(false);
 
 function shortenUrl(url) {
+  isLoading.value = true;
+
   const body = {urlDest: url};
 
   http.post("/short", JSON.stringify(body))
     .then(res => res.json())
     .then(data => {
       urlShortened.value = data.urlRef.replace("http://localhost:1001/", "https://sh.linky.cat/");
+      isLoading.value = false;
+      isReady.value = true;
     });
 } 
 
@@ -43,15 +50,16 @@ function copyUrl(url) {
     
   </header>
   <main class="container flex f-column f-centered">
-    <section class="container">
-      <UrlFormComponent @click="shortenUrl" type="shorten" v-if="!urlShortened" />
-      <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-else />
-      <NotificationTrayComponent ref="notification-tray" />
+    <section class="container flex f-colum">
+      <img class="loading" :src="loading_icon" alt="" v-if="isLoading">
+      <UrlFormComponent @click="shortenUrl" type="shorten" v-if="!isLoading && !isReady" />
+      <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-if="isReady" />
     </section>
   </main>
   <footer class="footer flex f-centered" >
-      <img title="Linky Cat" class="linkycat-logo" :src="logo" alt="Linky Cat logo, a cat moving it's tail.">
+      <img title="Linky Cat" class="linkycat-logo" :src="logo_icon" alt="Linky Cat logo, a cat moving it's tail.">
   </footer>
+  <NotificationTrayComponent ref="notification-tray" />
 </template>
 
 <style scoped>
@@ -60,6 +68,7 @@ function copyUrl(url) {
   max-width: 1040px;
   width: 98%;
   margin: auto;
+
 }
 
 .title {
@@ -79,6 +88,11 @@ function copyUrl(url) {
     /* margin-left: -160px; */
     font-size: 10pt;
   }
+}
+
+.loading {
+  margin: auto;
+  width: 40px;
 }
 
 .footer {
