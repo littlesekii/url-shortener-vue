@@ -116,17 +116,17 @@ function copyUrl(url) {
       <aside class="about-cards flex f-column f-centered">
         <div class="about-cards-row flex">
           <div class="about-cards-card">
-            <img :src="FRIENDLY_ICON" alt="">
+            <img :src="FRIENDLY_ICON" alt="Friendly Icon">
             <h3>Friendly</h3>
             <p>Short links are memorable, more legible and easier to be written.</p>
           </div>
           <div class="about-cards-card">
-            <img :src="SHORT_ICON" alt="">
+            <img :src="SHORT_ICON" alt="Short Icon">
             <h3>Short</h3>
             <p>Shorten any link from any website, regardless of its length.</p>
           </div>
           <div class="about-cards-card">
-            <img :src="FAST_ICON" alt="">
+            <img :src="FAST_ICON" alt="Fast Icon">
             <h3>Fast</h3>
             <p>Shortened, copied, shared, accessed. Just like that. </p>
           </div>
@@ -134,17 +134,17 @@ function copyUrl(url) {
 
         <div class="about-cards-row flex">
           <div class="about-cards-card">
-            <img :src="REUSABLE_ICON" alt="">
+            <img :src="REUSABLE_ICON" alt="Reusable Icon">
             <h3>Reusable</h3>
             <p>Shorten once, share whenever and wherever you want.</p>
           </div>
           <div class="about-cards-card">
-            <img :src="SECURE_ICON" alt="">
+            <img :src="SECURE_ICON" alt="Secure Icon">
             <h3>Secure</h3>
             <p>URL Shortener service has HTTPS protocol and data encryption.</p>
           </div>
           <div class="about-cards-card">
-            <img :src="ANALYSABLE_ICON" alt="">
+            <img :src="ANALYSABLE_ICON" alt="Analysable Icon">
             <h3>Analysable</h3>
             <p>Check useful data from shortened URL using the analytics tool. (Coming Soon)</p>
           </div>
