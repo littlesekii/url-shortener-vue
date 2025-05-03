@@ -11,8 +11,11 @@ const router = createRouter({
     },
     {
       path: "/:pathMatch(.*)*",
-      name: "tree",
-      component: () => import("../views/RedirectView.vue"),
+      name: "redirect",
+      beforeEnter(to) {
+        const path = to.params.pathMatch;
+        window.location.href = `https://api.linky.cat/short/${path}`;
+      },
     },
     // {
     //   path: "/about",
