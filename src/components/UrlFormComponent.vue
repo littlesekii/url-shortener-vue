@@ -45,9 +45,9 @@ form {
   margin-right: 5px;
 
   border-radius: 10px;
-  border: none;
+  border: 1px solid var(--color-text);
 
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  /* box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px; */
 
   font-size: 12pt;
 }
@@ -58,9 +58,9 @@ form {
   padding: 10px 15px;
 
   border-radius: 10px;
-  border: none;
+  border: 1px solid var(--color-brand);
 
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  /* box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px; */
 
   cursor: pointer;
 
@@ -76,13 +76,13 @@ form {
     flex-direction: column;
   }
   .input-url {
-    max-width: 90%;
+    max-width: 100%;
 
     margin: 0;
     margin-bottom: 5px;
   }
   .input-button {
-    max-width: 90%;
+    max-width: 100%;
   }
 }
 </style>

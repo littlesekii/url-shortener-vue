@@ -5,16 +5,33 @@ import NotificationTrayComponent from "@/components/Notification/NotificationTra
 import { computed, ref, useTemplateRef } from "vue";
 
 import LOADING_ICON from "@/assets/icons/loading.svg";
-import LOGO_DARK_ICON from "@/assets/icons/logo-dark.gif";
-import LOGO_LIGHT_ICON from "@/assets/icons/logo-light.gif";
+import LOGO_DARK_ICON from "@/assets/icons/logo_dark.gif";
+import LOGO_LIGHT_ICON from "@/assets/icons/logo_light.gif";
+
+import FRIENDLY_LIGHT_ICON from "@/assets/icons/friendly.svg";
+import FRIENDLY_DARK_ICON from "@/assets/icons/friendly_dark.svg";
+import SHORT_LIGHT_ICON from "@/assets/icons/short.svg";
+import SHORT_DARK_ICON from "@/assets/icons/short_dark.svg";
+import REUSABLE_LIGHT_ICON from "@/assets/icons/reusable.svg";
+import REUSABLE_DARK_ICON from "@/assets/icons/reusable_dark.svg";
+import FAST_LIGHT_ICON from "@/assets/icons/fast.svg";
+import FAST_DARK_ICON from "@/assets/icons/fast_dark.svg";
+import SECURE_LIGHT_ICON from "@/assets/icons/secure.svg";
+import SECURE_DARK_ICON from "@/assets/icons/secure_dark.svg";
+import ANALYSABLE_LIGHT_ICON from "@/assets/icons/analysable.svg";
+import ANALYSABLE_DARK_ICON from "@/assets/icons/analysable_dark.svg";
 
 import http from "@/utils/http";
 
 const notificationTrayRef = useTemplateRef("notification-tray");
 
-const LOGO_ICON = computed(() => {
-  return (window.matchMedia("(prefers-color-scheme: dark)").matches) ? LOGO_DARK_ICON : LOGO_LIGHT_ICON;
-});
+const LOGO_ICON       = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? LOGO_DARK_ICON : LOGO_LIGHT_ICON);
+const FRIENDLY_ICON   = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? FRIENDLY_DARK_ICON : FRIENDLY_LIGHT_ICON);
+const SHORT_ICON      = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? SHORT_DARK_ICON : SHORT_LIGHT_ICON);
+const REUSABLE_ICON   = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? REUSABLE_DARK_ICON : REUSABLE_LIGHT_ICON);
+const FAST_ICON       = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? FAST_DARK_ICON : FAST_LIGHT_ICON);
+const SECURE_ICON     = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? SECURE_DARK_ICON : SECURE_LIGHT_ICON);
+const ANALYSABLE_ICON = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? ANALYSABLE_DARK_ICON : ANALYSABLE_LIGHT_ICON);
 
 const urlShortened = ref("");
 const isLoading = ref(false);
@@ -62,14 +79,79 @@ function copyUrl(url) {
       <i>by Linky Cat™</i> 
   </header>
 
-  <main class="container flex f-column f-centered">
-    <section class="container flex f-column f-centered">
+  <main class="container main flex f-column f-centered">
+
+    <section class="section-form flex f-column f-centered">
+      <div class="form-intro">
+        <p>Paste the URL to be shortened.</p>
+      </div>
       <img class="loading" :src="LOADING_ICON" alt="" v-if="isLoading">
       <UrlFormComponent @click="shortenUrl" type="shorten" ref="urlshortener-input" v-if="!isLoading && !isReady" />
       <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-if="isReady" />
+
+      <div class="form-intro">
+        <p>Create links that are friendly, easier to share and remember.</p>
+      </div>
+    </section>
+    
+    <!-- <div class="separator"></div> -->
+
+    <section class="section-about flex f-column">
+      <article class="about-description">
+        <h2>Modern and fast URL Shortener!</h2>
+        <p>URL Shortener by Linky Cat allows you to shorten long links from 
+          <a target="_blank" href="https://www.google.com">Google</a>, 
+          <a target="_blank" href="https://www.instagram.com">Instagram</a>,
+          <a target="_blank" href="https://www.tiktok.com">TikTok</a>,
+          <a target="_blank" href="https://www.youtube.com">YouTube</a>, 
+          <a target="_blank" href="https://www.x.com">X</a>, 
+          <a target="_blank" href="https://www.facebook.com">Facebook</a>, 
+          <a target="_blank" href="https://www.linkedin.com">LinkedIn</a>, 
+           blogs and many other sites. Just paste the long URL in the field above and click the Shorten URL button. 
+           When your short link is ready, just copy and share it on sites, chat, documents, emails, everywhere! 
+           <!-- After shortening the URL, check how many clicks it received. -->
+        </p>
+      </article>
+
+      <aside class="about-cards flex f-column f-centered">
+        <div class="about-cards-row flex">
+          <div class="about-cards-card">
+            <img :src="FRIENDLY_ICON" alt="">
+            <h3>Friendly</h3>
+            <p>Short links are memorable, more legible and easier to be written.</p>
+          </div>
+          <div class="about-cards-card">
+            <img :src="SHORT_ICON" alt="">
+            <h3>Short</h3>
+            <p>Shorten any link from any website, regardless of its length.</p>
+          </div>
+          <div class="about-cards-card">
+            <img :src="FAST_ICON" alt="">
+            <h3>Fast</h3>
+            <p>Shortened, copied, shared, accessed. Just like that. </p>
+          </div>
+        </div>
+
+        <div class="about-cards-row flex">
+          <div class="about-cards-card">
+            <img :src="REUSABLE_ICON" alt="">
+            <h3>Reusable</h3>
+            <p>Shorten once, share whenever and wherever you want.</p>
+          </div>
+          <div class="about-cards-card">
+            <img :src="SECURE_ICON" alt="">
+            <h3>Secure</h3>
+            <p>URL Shortener service has HTTPS protocol and data encryption.</p>
+          </div>
+          <div class="about-cards-card">
+            <img :src="ANALYSABLE_ICON" alt="">
+            <h3>Analysable</h3>
+            <p>Check useful data from shortened URL using the analytics tool. (Coming Soon)</p>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    
   </main>
 
   <footer class="footer flex f-centered" >
@@ -82,14 +164,14 @@ function copyUrl(url) {
 <style scoped>
 
 .container {
-  max-width: 1040px;
-  width: 98%;
+  max-width: 615px;
+  width: 95%;
   margin: auto;
 }
 
 .title {
-  margin-top: -100px;
-  padding: 25px;
+  margin-top: 50px;
+  padding: 20px;
 
   h1 {
     text-align: center;
@@ -105,21 +187,116 @@ function copyUrl(url) {
   }
 }
 
+main {
+  section {
+    /* border: 1px solid black; */
+    /* margin-bottom: 100px; */
+  }
+}
+
+.section-form  {
+  width: 100%;
+
+  margin-top: 50px;
+
+  border-radius: 10px;
+
+  background-color: var(--color-container);
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+  padding: 20px 25px;
+}
+
+.form-intro:first-child {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-intro:last-child {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.section-about {
+  width: 100%;
+  
+  margin-top: 100px;
+  /* border-radius: 10px;
+
+  padding: 20px 25px; */
+}
+
+.about-description {
+  
+  h2 {
+    font-size: 17pt;
+    font-weight: 500;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 11pt;
+    text-align: justify;
+    font-weight: 100;
+  }
+}
+
+.about-cards {
+  margin-top: 50px;
+}
+
+.about-cards-card {
+  /* height: 250px; */
+  flex: 1;
+
+  text-align: center;
+
+  /* border: 1px solid white; */
+
+  padding: 15px;
+
+  img {
+    width: 70px;
+    fill: aquamarine;
+  }
+  h3 {
+    /* height: 10px; */
+    font-weight: 400px;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 12pt;
+    
+    font-weight: 100; 
+
+    hyphens: auto;
+  }
+}
+
 .loading {
-  width: 40px;
+  width: 42px;
 }
 
 .footer {
   width: 100%;
   padding: 20px 0;
 
-  position: absolute;
-  bottom: 0px;
-
   .linkycat-logo {
     width: 40px;
     /* margin-left: -15px; */
   }
+}
+
+.separator {
+  height: 1px;
+  width: 90%;
+  margin: 20px;
+  
+  background-color: var(--color-text);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
 }
 
 </style>

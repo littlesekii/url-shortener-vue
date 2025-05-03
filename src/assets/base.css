@@ -8,10 +8,13 @@
   --black: #181818;
   --black-soft: #222222;
   --black-mute: #282828;
+  --black-light: #363636;
 
   --gray: #888;
 
   --indigo: #2c3e50;
+
+  --bluecat: #6f91ff;
 
   --brand: #9B32FF;
   --green-success: #00d369;
@@ -20,17 +23,23 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--white-soft);
-  --color-text: var(--gray);
+  --color-background: var(--white-mute);
+  --color-text: var(--black-light);
 
   --color-brand: var(--brand);
   --color-success: var(--green-success);
   --color-error: var(--red-error);
+
+  --color-container: var(--white);
+
+  --color-link: var(--bluecat);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--black-soft);
     --color-text: var(--white-soft);
+
+    --color-container: var(--black-light);
   }
 }
 
@@ -49,7 +58,7 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
 
   color: var(--color-text);
   background: var(--color-background);  
