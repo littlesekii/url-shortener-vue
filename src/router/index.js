@@ -14,7 +14,7 @@ const router = createRouter({
       name: "redirect",
       beforeEnter(to) {
         const path = to.params.pathMatch;
-        window.location.href = `https://api.linky.cat/short/${path}`;
+        window.location.href = `https://sh.linky.cat/${path}`;
       },
     },
     // {

@@ -1,5 +1,5 @@
 const http = {
-  baseUrl: "https://api.linky.cat",
+  baseUrl: "https://sh.linky.cat",
   get: function (url) {
     // console.log(this.baseUrl + url);
 

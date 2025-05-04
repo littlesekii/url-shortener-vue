@@ -42,7 +42,7 @@ function shortenUrl(url) {
 
   const body = {urlDest: url};
 
-  http.post("/short", JSON.stringify(body))
+  http.post("/api/short", JSON.stringify(body))
     .then(res => { 
       if (res.ok) { return res.json(); }
       else {
