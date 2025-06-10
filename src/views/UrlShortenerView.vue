@@ -33,16 +33,16 @@ const FAST_ICON       = computed(() => window.matchMedia("(prefers-color-scheme:
 const SECURE_ICON     = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? SECURE_DARK_ICON : SECURE_LIGHT_ICON);
 const ANALYSABLE_ICON = computed(() => window.matchMedia("(prefers-color-scheme: dark)").matches ? ANALYSABLE_DARK_ICON : ANALYSABLE_LIGHT_ICON);
 
-const urlShortened = ref("");
+const shortenedUrl = ref("");
 const isLoading = ref(false);
 const isReady = ref(false);
 
 function shortenUrl(url) {
   isLoading.value = true;
 
-  const body = {urlDest: url};
+  const body = {targetUrl: url};
 
-  http.post("/api/short", JSON.stringify(body))
+  http.post("/api/shorten", JSON.stringify(body))
     .then(res => { 
       if (res.ok) { return res.json(); }
       else {
@@ -50,7 +50,7 @@ function shortenUrl(url) {
       }    
     })
     .then(data => {
-      urlShortened.value = data.urlRef.replace("http://localhost:1001/", "https://sh.linky.cat/");
+      shortenedUrl.value = data.shortUrl;
       
       isLoading.value = false;
       isReady.value = true;
@@ -87,7 +87,7 @@ function copyUrl(url) {
       </div>
       <img class="loading" :src="LOADING_ICON" alt="" v-if="isLoading">
       <UrlFormComponent @click="shortenUrl" type="shorten" ref="urlshortener-input" v-if="!isLoading && !isReady" />
-      <UrlFormComponent @click="copyUrl" type="shortened" :value="urlShortened" v-if="isReady" />
+      <UrlFormComponent @click="copyUrl" type="shortened" :value="shortenedUrl" v-if="isReady" />
 
       <div class="form-intro">
         <p>Create links that are friendly, easier to share and remember.</p>

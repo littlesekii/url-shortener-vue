@@ -1,5 +1,5 @@
 const http = {
-  baseUrl: "https://sh.linky.cat",
+  baseUrl: import.meta.env.VITE_SERVER_URL,
   get: function (url) {
     // console.log(this.baseUrl + url);
 
