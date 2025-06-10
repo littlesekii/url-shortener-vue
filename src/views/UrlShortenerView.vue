@@ -3,6 +3,7 @@ import UrlFormComponent from "@/components/UrlFormComponent.vue";
 import NotificationTrayComponent from "@/components/Notification/NotificationTrayComponent.vue";
 
 import { computed, ref, useTemplateRef } from "vue";
+import { useReCaptcha } from "vue-recaptcha-v3";
 
 import LOADING_ICON from "@/assets/icons/loading.svg";
 import LOGO_DARK_ICON from "@/assets/icons/logo_dark.gif";
@@ -38,9 +39,21 @@ const isLoading = ref(false);
 const isReady = ref(false);
 
 function shortenUrl(url) {
+  
   isLoading.value = true;
 
   const body = {targetUrl: url};
+
+  const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+  
+  recaptchaLoaded().then(() => {
+    executeRecaptcha("shorten_url").then(token => {
+      console.log("Recaptcha token:", token);
+    });
+  });
+
+  
+  
 
   http.post("/api/shorten", JSON.stringify(body))
     .then(res => { 

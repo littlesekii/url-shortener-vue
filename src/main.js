@@ -4,9 +4,14 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
+import { VueReCaptcha } from "vue-recaptcha-v3";
+
 const app = createApp(App);
 
 app.use(router);
+app.use(VueReCaptcha, {
+  siteKey: "6LeFGFwrAAAAAHSbyscruenXd3AxGPH8O3zDEc0b"
+});
 
 app.mount("#app");
 
