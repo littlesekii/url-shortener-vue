@@ -44,12 +44,10 @@ function shortenUrl(url) {
 
   const body = {targetUrl: url};
 
-  const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+  const { recaptchaLoaded } = useReCaptcha();
   
   recaptchaLoaded().then(() => {
-    executeRecaptcha("shorten_url").then(token => {
-      console.log("Recaptcha token:", token);
-    });
+    console.log("aaaa");
   });
 
   
