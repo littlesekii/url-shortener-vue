@@ -38,40 +38,39 @@ const shortenedUrl = ref("");
 const isLoading = ref(false);
 const isReady = ref(false);
 
+const recaptcha = useReCaptcha();
+
 function shortenUrl(url) {
   
   isLoading.value = true;
 
-  const body = {targetUrl: url};
+  recaptcha.recaptchaLoaded().then(() => {
+    recaptcha.executeRecaptcha("shorten").then((token) => {    
+      const body = {targetUrl: url, recaptchaToken: token};
+      http.post("/api/shorten", JSON.stringify(body))
+        .then(res => { 
+          if (res.ok) { return res.json(); }
+          else {
+            throw new Error();
+          }    
+        })
+        .then(data => {
+          shortenedUrl.value = data.shortUrl;
+          
+          isLoading.value = false;
+          isReady.value = true;
+          notificationTrayRef.value.notify(true, "URL shortened");
+        })
+        .catch(() => {
+          isLoading.value = false;
+          isReady.value = false;
+          notificationTrayRef.value.notify(false, "Invalid URL");
+        });
 
-  const { recaptchaLoaded } = useReCaptcha();
-  
-  recaptchaLoaded().then(() => {
-    console.log("aaaa");
+    });
   });
 
   
-  
-
-  http.post("/api/shorten", JSON.stringify(body))
-    .then(res => { 
-      if (res.ok) { return res.json(); }
-      else {
-        throw new Error();
-      }    
-    })
-    .then(data => {
-      shortenedUrl.value = data.shortUrl;
-      
-      isLoading.value = false;
-      isReady.value = true;
-      notificationTrayRef.value.notify(true, "URL shortened");
-    })
-    .catch(() => {
-      isLoading.value = false;
-      isReady.value = false;
-      notificationTrayRef.value.notify(false, "Invalid URL");
-    });
 } 
 
 function copyUrl(url) {
