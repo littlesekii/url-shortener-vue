@@ -10,7 +10,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(VueReCaptcha, {
-  siteKey: "6LeFGFwrAAAAAHSbyscruenXd3AxGPH8O3zDEc0b"
+  siteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY
 });
 
 app.mount("#app");
