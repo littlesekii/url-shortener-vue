@@ -9,6 +9,11 @@ import LOADING_ICON from "@/assets/icons/loading.svg";
 import LOGO_DARK_ICON from "@/assets/icons/logo_dark.gif";
 import LOGO_LIGHT_ICON from "@/assets/icons/logo_light.gif";
 
+import SHORTEN_EXAMPLE_PNG from "@/assets/images/shorten_example.png";
+import SHORTEN_EXAMPLE_GIF from "@/assets/images/shorten_example.gif";
+import SHARING_EXAMPLE_PNG from "@/assets/images/sharing_example.png";
+import SHARING_EXAMPLE_GIF from "@/assets/images/sharing_example.gif";
+
 import FRIENDLY_LIGHT_ICON from "@/assets/icons/friendly.svg";
 import FRIENDLY_DARK_ICON from "@/assets/icons/friendly_dark.svg";
 import SHORT_LIGHT_ICON from "@/assets/icons/short.svg";
@@ -23,6 +28,7 @@ import ANALYSABLE_LIGHT_ICON from "@/assets/icons/analysable.svg";
 import ANALYSABLE_DARK_ICON from "@/assets/icons/analysable_dark.svg";
 
 import http from "@/utils/http";
+import util from "@/utils/util";
 
 const notificationTrayRef = useTemplateRef("notification-tray");
 
@@ -107,7 +113,7 @@ function copyUrl(url) {
     <!-- <div class="separator"></div> -->
 
     <section class="section-about flex f-column">
-      <article class="about-description">
+      <article class="about-description flex f-column">
         <h2>Modern and fast URL Shortener!</h2>
         <p>URL Shortener by Linky Cat allows you to shorten long links from 
           <a target="_blank" href="https://www.google.com">Google</a>, 
@@ -121,9 +127,51 @@ function copyUrl(url) {
            When your short link is ready, just copy and share it on sites, chat, documents, emails, everywhere! 
            <!-- After shortening the URL, check how many clicks it received. -->
         </p>
-      </article>
+        <h2>Big links no more!</h2>
+        <p>
+          With URL Shortener by Linky Cat you can turn links like this:
+        </p>
+        <a target="_blank" href="https://pets24.co.za/wp-content/uploads/2023/10/cute-sleeping-kitten-cat-2022-11-16-19-07-00-utc-scaled.webp">
+          https://pets24.co.za/wp-content/uploads/2023/10/cute-sleeping-kitten-cat-2022-11-16-19-07-00-utc-scaled.webp
+        </a>
+        <!-- <br> -->
+        <p>Into a link like this:</p>
+        <a target="_blank" href="https://sh.linky.cat/9M3G0">
+          https://sh.linky.cat/BX35T
+        </a>
+        
+        <h2>How to use:</h2>
+        <p>1. Paste your long URL (from Google, Instagram, TikTok, etc.) in the field above.</p>
+        <p>2. Click "Shorten URL" and done!</p>
+        <p>3. Copy your new short link and share it anywhere.</p>
+        <div class="wrapper-example-gif flex f-column f-centered">
+          <p>Click image below to see a animated example</p>
+          <img 
+            class="example-gif"
+            :src="SHORTEN_EXAMPLE_PNG" 
+            @click="(e) => e.target.src = util.getFileExtension(e.target.src).indexOf('png') > -1 ? SHORTEN_EXAMPLE_GIF : SHORTEN_EXAMPLE_PNG"
+            alt="
+              Example of a url being shortened by pasting a link into the field and clicking the 'Shorten URL' button. 
+              After the shortening the shortened url is copied by clicking 'Copy URL' button.
+            "
+          >
+          &darr;
+          <p>Click image below to see a animated example</p>
+          <img 
+            class="example-gif"
+            :src="SHARING_EXAMPLE_PNG" 
+            @click="(e) => e.target.src = util.getFileExtension(e.target.src).indexOf('png') > -1 ? SHARING_EXAMPLE_GIF : SHARING_EXAMPLE_PNG"
+            alt="
+              Example of a url being shortened by pasting a link into the field and clicking the 'Shorten URL' button. 
+              After the shortening the shortened url is copied by clicking 'Copy URL' button.
+            "
+          >
+        </div>
 
+      </article>
+      
       <aside class="about-cards flex f-column f-centered">
+        <h2>Why use URL Shortener by Linky Cat?</h2>
         <div class="about-cards-row flex">
           <div class="about-cards-card">
             <img :src="FRIENDLY_ICON" alt="Friendly Icon">
@@ -230,7 +278,7 @@ main {
 .section-about {
   width: 100%;
   
-  margin-top: 50px;
+  margin-top: 25px;
   /* border-radius: 10px;
 
   padding: 20px 25px; */
@@ -241,6 +289,7 @@ main {
   h2 {
     font-size: 17pt;
     font-weight: 500;
+    margin-top: 25px;
   }
   p {
     margin-top: 5px;
@@ -250,8 +299,28 @@ main {
   }
 }
 
+.wrapper-example-gif {
+  margin-top: 20px;
+  justify-content: space-around;
+  
+  font-size: 15pt;
+  font-weight: bolder;
+}
+
+.example-gif {
+  max-width: 99%;
+  width: 400px;
+  margin: 10px 0;
+  padding: 5px;
+
+
+  border: 1px dashed var(--gray);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
 .about-cards {
-  margin-top: 50px;
+  margin-top: 15px;
 }
 
 .about-cards-card {

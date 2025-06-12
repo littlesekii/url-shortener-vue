@@ -24,7 +24,7 @@ const buttonText = computed(() => {
 
 <template>
   <form class="flex f-centered" @submit.prevent="emit('click', inputRef.value)">
-    <input ref="input" class="input-url" :value="prop.value" type="text" placeholder="Type the link here" :readonly="isReadonly" />
+    <input ref="input" class="input-url" :value="prop.value" type="text" placeholder="🔗 Type the link here" :readonly="isReadonly" />
     <button class="input-button">{{ buttonText }}</button>
   </form>
 </template>
@@ -69,6 +69,13 @@ form {
 
   background-color: var(--color-brand);
   color: var(--white);
+
+  transition: all 0.3s;
+}
+
+.input-button:hover {  
+  background-color: var(--color-brand-hover);
+  border: 1px solid var(--color-brand-hover);
 }
 
 @media (max-width: 640px) {

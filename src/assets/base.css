@@ -17,6 +17,7 @@
   --bluecat: #6f91ff;
 
   --brand: #9B32FF;
+  --brand-hover: #ab52ff;
   --green-success: #00d369;
   --red-error: #e44949;
 }
@@ -27,6 +28,7 @@
   --color-text: var(--black-light);
 
   --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
   --color-success: var(--green-success);
   --color-error: var(--red-error);
 
