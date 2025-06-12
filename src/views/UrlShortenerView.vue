@@ -129,16 +129,19 @@ function copyUrl(url) {
         </p>
         <h2>Big links no more!</h2>
         <p>
-          With URL Shortener by Linky Cat you can turn links like this:
+          With URL Shortener by Linky Cat you can turn links like this: <br>
+          <a target="_blank" href="https://pets24.co.za/wp-content/uploads/2023/10/cute-sleeping-kitten-cat-2022-11-16-19-07-00-utc-scaled.webp">
+            https://pets24.co.za/wp-content/uploads/2023/10/cute-sleeping-kitten-cat-2022-11-16-19-07-00-utc-scaled.webp
+          </a>
         </p>
-        <a target="_blank" href="https://pets24.co.za/wp-content/uploads/2023/10/cute-sleeping-kitten-cat-2022-11-16-19-07-00-utc-scaled.webp">
-          https://pets24.co.za/wp-content/uploads/2023/10/cute-sleeping-kitten-cat-2022-11-16-19-07-00-utc-scaled.webp
-        </a>
+        
         <!-- <br> -->
-        <p>Into a link like this:</p>
-        <a target="_blank" href="https://sh.linky.cat/BX35T">
-          https://sh.linky.cat/BX35T
-        </a>
+        <p>Into a link like this: <br>
+          <a target="_blank" href="https://sh.linky.cat/BX35T">
+            https://sh.linky.cat/BX35T
+          </a>
+      </p>
+        
         
         <h2>How to use:</h2>
         <p>1. Paste your long URL (from Google, Instagram, TikTok, etc.) in the field above.</p>
