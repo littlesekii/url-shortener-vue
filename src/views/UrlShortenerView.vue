@@ -321,6 +321,10 @@ main {
 
 .about-cards {
   margin-top: 15px;
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .about-cards-card {
