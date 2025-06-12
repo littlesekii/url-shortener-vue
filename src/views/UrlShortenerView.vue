@@ -136,7 +136,7 @@ function copyUrl(url) {
         </a>
         <!-- <br> -->
         <p>Into a link like this:</p>
-        <a target="_blank" href="https://sh.linky.cat/9M3G0">
+        <a target="_blank" href="https://sh.linky.cat/BX35T">
           https://sh.linky.cat/BX35T
         </a>
         
