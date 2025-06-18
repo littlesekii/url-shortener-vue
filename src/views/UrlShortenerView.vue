@@ -123,8 +123,7 @@ function copyUrl(url) {
           <a target="_blank" href="https://www.x.com">X</a>, 
           <a target="_blank" href="https://www.facebook.com">Facebook</a>, 
           <a target="_blank" href="https://www.linkedin.com">LinkedIn</a>, 
-           blogs and many other sites. Just paste the long URL in the field above and click the Shorten URL button. 
-           When your short link is ready, just copy and share it on sites, chat, documents, emails, everywhere! 
+           blogs and many other sites. When your short link is ready, just copy and share it on sites, chat, documents, emails, everywhere! 
            <!-- After shortening the URL, check how many clicks it received. -->
         </p>
         <h2>Big links no more!</h2>
