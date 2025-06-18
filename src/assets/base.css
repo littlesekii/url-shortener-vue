@@ -14,7 +14,8 @@
 
   --indigo: #2c3e50;
 
-  --bluecat: #587fff;
+  --bluecat: #5b7be6;
+  --bluecat-light: #0054DB;
 
   --brand: #9B32FF;
   --brand-hover: #ab52ff;
@@ -34,13 +35,14 @@
 
   --color-container: var(--white);
 
-  --color-link: var(--bluecat);
+  --color-link: var(--bluecat-light);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--black-soft);
     --color-text: var(--white-soft);
 
+    --color-link: var(--bluecat)
     --color-container: var(--black-light);
   }
 }
