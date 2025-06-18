@@ -42,7 +42,7 @@
     --color-background: var(--black-soft);
     --color-text: var(--white-soft);
 
-    --color-link: var(--bluecat)
+    --color-link: var(--bluecat);
     --color-container: var(--black-light);
   }
 }
