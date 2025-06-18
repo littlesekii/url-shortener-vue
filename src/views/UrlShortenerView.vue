@@ -120,8 +120,8 @@ function copyUrl(url) {
           <a target="_blank" href="https://www.instagram.com">Instagram</a>,
           <a target="_blank" href="https://www.tiktok.com">TikTok</a>,
           <a target="_blank" href="https://www.youtube.com">YouTube</a>, 
-          <a target="_blank" href="https://www.x.com">X</a>, 
           <a target="_blank" href="https://www.facebook.com">Facebook</a>, 
+          <a target="_blank" href="https://www.x.com">X</a>,           
           <a target="_blank" href="https://www.linkedin.com">LinkedIn</a>, 
            blogs and any other site. When your short link is ready, copy and share it everywhere! 
            <!-- After shortening the URL, check how many clicks it received. -->
