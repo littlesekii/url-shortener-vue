@@ -84,7 +84,6 @@ let dataLoaded = computed(() => (props.data.label.length > 0) ? true : false);
 
 <style scoped>
 .chart {
-  margin-top: 10px;
-  width: 100%;
+  min-width: 100%;
 }
 </style>

@@ -47,7 +47,13 @@ const isReady = ref(false);
 const recaptcha = useReCaptcha();
 
 function shortenUrl(url) {
-  
+  url = url.trim();
+
+  if (url === "") {
+    notificationTrayRef.value.notify(false, "URL cannot be empty");
+    return;
+  }
+
   isLoading.value = true;
 
   recaptcha.recaptchaLoaded().then(() => {
@@ -102,7 +108,7 @@ function copyUrl(url) {
         <p>Paste the URL to be shortened.</p>
       </div>
       <img class="loading" :src="LOADING_ICON" alt="" v-if="isLoading">
-      <UrlFormComponent @click="shortenUrl" type="shorten" ref="urlshortener-input" v-if="!isLoading && !isReady" />
+      <UrlFormComponent @click="shortenUrl" type="shorten" v-if="!isLoading && !isReady" />
       <UrlFormComponent @click="copyUrl" type="shortened" :value="shortenedUrl" v-if="isReady" />
 
       <div class="form-intro">
