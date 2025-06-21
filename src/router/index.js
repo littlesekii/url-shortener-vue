@@ -10,6 +10,16 @@ const router = createRouter({
       component: UrlShortenerView,
     },
     {
+      path: "/analytics/:pathMatch(.*)*",
+      name: "analytics",
+      component: () => import("../views/AnalyticsView.vue"),
+    },
+    // {
+    //   path: "/analytics",
+    //   name: "analytics",
+    //   component: () => import("../views/AnalyticsView.vue"),
+    // },
+    {
       path: "/:pathMatch(.*)*",
       name: "redirect",
       beforeEnter(to) {

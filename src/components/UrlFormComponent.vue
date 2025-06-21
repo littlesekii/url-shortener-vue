@@ -3,7 +3,8 @@ import { computed, useTemplateRef } from "vue";
 
 const BUTTON_TEXT_TYPES = {
   "shortened": "Copy URL",
-  "shorten": "Shorten URL"
+  "shorten": "Shorten URL",
+  "analytics": "Analyze URL"
 };
 
 const prop = defineProps(["type", "value"]);

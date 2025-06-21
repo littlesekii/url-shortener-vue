@@ -90,8 +90,8 @@ function copyUrl(url) {
 
 <template>
 
-  <header class="container title flex f-column ">
-      <h1>URL Shortener</h1>
+  <header class="container title flex f-column">
+      <a href="/"><h1>URL Shortener</h1></a>
       <i>by Linky Cat™</i> 
   </header>
 
@@ -124,8 +124,9 @@ function copyUrl(url) {
           <a target="_blank" href="https://www.x.com">X</a>,           
           <a target="_blank" href="https://www.linkedin.com">LinkedIn</a>, 
            blogs and any other site. When your short link is ready, copy and share it everywhere! 
-           <!-- After shortening the URL, check how many clicks it received. -->
+           
         </p>
+        <p>After shortening the URL, you can <a href="analytics">check useful data from your short URL.</a></p>
         <h2>Big links no more!</h2>
         <p>
           With URL Shortener by Linky Cat you can turn links like this: <br>
@@ -139,7 +140,7 @@ function copyUrl(url) {
           <a target="_blank" href="https://sh.linky.cat/BX35T">
             https://sh.linky.cat/BX35T
           </a>
-      </p>
+        </p>
         
         
         <h2>How to use:</h2>
@@ -233,11 +234,16 @@ function copyUrl(url) {
   margin-top: 50px;
   padding: 20px;
 
+  align-items: center;
+
+  a {
+    color: var(--color-text);
+  }
   h1 {
     text-align: center;
 
     font-size: 28pt;
-    font-weight: 500;
+    font-weight: 500; 
   }
   i {
     text-align: center;
@@ -280,7 +286,7 @@ main {
 .section-about {
   width: 100%;
   
-  margin-top: 25px;
+  margin-top: 10px;
   /* border-radius: 10px;
 
   padding: 20px 25px; */
