@@ -132,7 +132,7 @@ function copyUrl(url) {
            blogs and any other site. When your short link is ready, copy and share it everywhere! 
            
         </p>
-        <p>After shortening the URL, you can <a href="analytics">check useful data from your short URL.</a></p>
+        <p>After shortening the URL, you can <a href="analytics">check useful data from your short URL.</a> (BETA)</p>
         <h2>Big links no more!</h2>
         <p>
           With URL Shortener by Linky Cat you can turn links like this: <br>
