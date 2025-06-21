@@ -1,7 +1,7 @@
 <script setup>
 
-import {  Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, scales, layouts } from "chart.js";
-import { computed, onMounted, reactive, ref } from "vue";
+import {  Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
+import { computed } from "vue";
 import { Line } from "vue-chartjs";
 
 ChartJS.register(

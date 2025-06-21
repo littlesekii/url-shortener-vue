@@ -29,30 +29,6 @@ const shortUrlAnalytics = reactive({
   }
 }); 
   
-  
-
-
-  // http.post(`/api/interaction/${shortUrlHash}`, JSON.stringify(body))
-  //   .then(res => { 
-  //     if (res.ok) { return res.json(); }
-  //     else {
-  //       throw new Error();
-  //     }    
-  //   })
-  //   .then(data => {
-  //     shortenedUrl.value = data.shortUrl;
-      
-  //     isLoading.value = false;
-  //     isReady.value = true;
-  //     notificationTrayRef.value.notify(true, "URL shortened");
-  //   })
-  //   .catch(() => {
-  //     isLoading.value = false;
-  //     isReady.value = false;
-  //     notificationTrayRef.value.notify(false, "Invalid URL");
-  //   });
-
-
 async function analyzeURL(shortUrl) {
 
   if (shortUrl === "") {
