@@ -132,7 +132,7 @@ function copyUrl(url) {
            blogs and any other site. When your short link is ready, copy and share it everywhere! 
            
         </p>
-        <p>After shortening the URL, you can <a href="analytics">check useful data from your short URL.</a> (BETA)</p>
+        <p>After shortening the URL, you can <a href="analytics">check useful data from your short URL.</a></p>
         <h2>Big links no more!</h2>
         <p>
           With URL Shortener by Linky Cat you can turn links like this: <br>
@@ -213,7 +213,7 @@ function copyUrl(url) {
           <div class="about-cards-card">
             <img :src="ANALYSABLE_ICON" alt="Analysable Icon">
             <h3>Analysable</h3>
-            <p>Check useful data from shortened URL using the analytics tool. (Coming Soon)</p>
+            <p>Check useful data from shortened URL using the <a href="analytics">analytics tool.</a></p>
           </div>
         </div>
       </aside>
@@ -256,13 +256,6 @@ function copyUrl(url) {
     margin-top: -5px;
     /* margin-left: -160px; */
     font-size: 10pt;
-  }
-}
-
-main {
-  section {
-    /* border: 1px solid black; */
-    /* margin-bottom: 100px; */
   }
 }
 

@@ -31,7 +31,7 @@ const database = computed(() => {
         borderWidth: 1,
         borderColor: LINE_COLOR,
         pointBorderWidth: 0, // This removes the white border
-        pointRadius: 3, // adjust circle size
+        pointRadius: 4, // adjust circle size
         data: props.data.value,
       }
     ]

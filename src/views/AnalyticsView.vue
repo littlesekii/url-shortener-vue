@@ -198,13 +198,6 @@ async function analyzeURL(shortUrl) {
   }
 }
 
-main {
-  section {
-    /* border: 1px solid black; */
-    /* margin-bottom: 100px; */
-  }
-}
-
 .section-form  {
   width: 100%;
 
