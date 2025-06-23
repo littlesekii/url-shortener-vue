@@ -3,6 +3,11 @@
 import {  Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
 import { computed } from "vue";
 import { Line } from "vue-chartjs";
+import util from "../utils/util";
+
+const GRID_COLOR = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#555555" : "#f2f2f2";
+const LINE_COLOR = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#BBBBBB" : "#AAAAAA";
+const LEGEND_COLOR = window.matchMedia("(prefers-color-scheme: dark)").matches ? "#BBBBBB" : "#AAAAAA";
 
 ChartJS.register(
   CategoryScale,
@@ -24,9 +29,9 @@ const database = computed(() => {
         label: "Clicks",
         backgroundColor: "#9B32FF",
         borderWidth: 1,
-        borderColor: "#444",
+        borderColor: LINE_COLOR,
         pointBorderWidth: 0, // This removes the white border
-        pointRadius: 5, // adjust circle size
+        pointRadius: 3, // adjust circle size
         data: props.data.value,
       }
     ]
@@ -41,6 +46,12 @@ const options = computed(() => {
       legend: {
         display: false // This removes the chart title
       },
+      tooltip: {
+        callbacks: {
+          // Customize tooltip content (optional)
+          title: (context) => `${context[0].label} - ${util.replaceCharAt(util.replaceCharAt(context[0].label, 3, 5), 4, 9)}`
+        }
+      },
     },
     scales: {
       x: {
@@ -48,10 +59,13 @@ const options = computed(() => {
           display: false
         },
         grid: {
-          display: false,
-          color: "#444444"
+          display: false
         },
         ticks: {
+          color: LEGEND_COLOR,
+          font: {
+            weight: 0
+          },
           maxTicksLimit: 8,
           maxRotation: 0, // Sem rotação
           minRotation: 0  // Garante que não haverá rotação
@@ -62,7 +76,7 @@ const options = computed(() => {
           display: false
         },
         grid: {
-          color: "#272727"
+          color: GRID_COLOR
         },
         ticks: {
           precision: 0,
@@ -84,6 +98,7 @@ let dataLoaded = computed(() => (props.data.label.length > 0) ? true : false);
 
 <style scoped>
 .chart {
+  cursor: pointer;
   min-width: 100%;
 }
 </style>

@@ -23,6 +23,7 @@ const shortUrlAnalytics = reactive({
   targetUrl: "",
   createdAt: 0,
   clicks: 0,
+  todayClicks: 0,
   interactions: {
     label: [],
     value: []
@@ -78,12 +79,21 @@ async function analyzeURL(shortUrl) {
   res = await http.async.get(`/api/interaction/${shortUrlData.id}`);
   const shortUrlInteractionData = await res.json();
 
-  res = await http.async.get(`/api/interaction/chart/day/${shortUrlData.id}?day=2002-04-13`);
+  const date = new Date();
+  const param = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`; 
+
+  res = await http.async.get(`/api/interaction/chart/day/${shortUrlData.id}?day=${param}&zone=${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
   const shortUrlInteractionChartDayData = await res.json();
 
   shortUrlAnalytics.shortUrl = shortUrlData.shortUrl;
   shortUrlAnalytics.targetUrl = shortUrlData.targetUrl;
   shortUrlAnalytics.clicks = shortUrlInteractionData.length.toLocaleString();
+
+  shortUrlAnalytics.todayClicks = 0;
+  shortUrlInteractionChartDayData.value.forEach(item => {
+    shortUrlAnalytics.todayClicks += parseInt(item);
+  });
+
   shortUrlAnalytics.createdAt = new Date(shortUrlData.createdAt).toLocaleDateString(
     navigator.language || "en-US", {
       year: "numeric",
@@ -125,7 +135,7 @@ async function analyzeURL(shortUrl) {
 
     <section class="section-analytics flex f-column f-centered" v-if="isReady" >
       
-      <h2>Analytics</h2>
+      <h2>Shortened URL Analytics</h2>
 
       <div class="analytics-info flex f-column f-centered">
         <p>Shortened URL</p>
@@ -140,12 +150,14 @@ async function analyzeURL(shortUrl) {
 
         <p>Shortened at</p>
         {{ shortUrlAnalytics.createdAt }}
-      </div>
-      
 
-      <h3>Your shortened URL got {{ shortUrlAnalytics.clicks }} clicks.</h3>
-      <LineChartComponent class="analytics-chart" :data="shortUrlAnalytics.interactions"  />
-      <p><span>Hover the graphic to see detailed info.</span></p>
+        <h3>Your shortened URL got a total of {{ shortUrlAnalytics.clicks }} clicks.</h3>
+      </div>
+      <div class="analytics-info-chart flex f-column f-centered">
+        <h4>Today clicks: {{ shortUrlAnalytics.todayClicks }}</h4>
+        <LineChartComponent class="analytics-chart" :data="shortUrlAnalytics.interactions"  />
+        <p><span>Hover the graphic to see detailed info.</span></p>
+      </div>
     </section>
   </main>
 
@@ -220,11 +232,11 @@ main {
   margin-top: 20px;
   text-align: center;
 
-  h2, h3, p {
+  h2, h3, h4, p {
     text-align: center;
   }
   h3 {
-    margin-top: 10px;
+    margin-top: 25px;
   }
   p {
     margin-top: 10px;
@@ -234,14 +246,31 @@ main {
 
     }
   }
-
+  
   .analytics-info {
     width: inherit;
     margin: 15px 0px;
   }
+  .analytics-info-chart {
+    width: inherit;
+    padding: 20px;
+    background-color: var(--color-container);
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    border-radius: 10px;
 
-  .analytics-chart {
-    margin-top: 25px;
+    h4 {
+    margin-bottom: 10px;
+    }
+    h4::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 6px;
+      border-radius: 100%;
+      background-color: var(--color-brand);
+
+    }
   }
 }
 
